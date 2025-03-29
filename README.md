@@ -97,11 +97,11 @@ newptr = realloc(ptr, 500 * sizeof(struct sbar));
 * У головній функції програми створюється масив потоків `threads`. Визначаються змінні `start` і `end` для вимірювання часу. `clock_gettime(CLOCK_MONOTONIC, &start)` записує час початку виконання. Створення потоків реалізовано нижче:
 ```
 for (int i = 0; i < NUM_THREADS; i++) {
-  if (pthread_create(&threads[i], NULL, thread_function, NULL) != 0) {
-      perror("pthread_create failed");
-        exit(1);
-  }
-}
+        if (pthread_create(&threads[i], NULL, thread_function, NULL) != 0) {
+            perror("pthread_create failed");
+            exit(1);
+        }
+    }
 ```
 * Тут `pthread_create` створює потоки. Якщо створення потоку не вдалося, програма завершується з помилкою.
 * `pthread_join` очікує завершення всіх потоків.
